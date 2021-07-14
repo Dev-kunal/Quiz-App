@@ -2,8 +2,13 @@ import { useQuiz } from "../../Context/QuizProvider";
 import { StatsType } from "../../Utils/types";
 import "./stats.css";
 
+
 export const Stats = () => {
-  const {stats } = useQuiz();
+  const { state: { stats },dispatch } = useQuiz();
+  type statsType = {
+  stats: ({})[];
+};
+
   return (
     <div className="stats-page">
       <h2>Score & Statistics</h2>
@@ -17,7 +22,7 @@ export const Stats = () => {
           </tr>
         </thead>
         <tbody>
-          {stats.map(({ name, attempts, highScore }:StatsType) => (
+          {stats.map(({ name, attempts, highScore }) => (
             <tr className="tr">
               <td className="td">{name}</td>
               <td className="td">{attempts}</td>
@@ -27,7 +32,7 @@ export const Stats = () => {
          
         </tbody>
       </table>
-      <button className="btn btn-quiz">Clear Stats</button>
+      <button className="btn btn-quiz" onClick={()=>dispatch({type:"CLEAR_STATS"})}>Clear Stats</button>
     </div>
   );
 };

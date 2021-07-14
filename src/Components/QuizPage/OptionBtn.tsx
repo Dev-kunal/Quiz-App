@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useQuiz } from "../../Context/QuizProvider";
-import { Option } from "../../Utils/Data";
+import {Option} from "../../Utils/types"
 
 type optionBtnProps = {
   option: Option,
-  
 };
 
 export const OptionBtn = ({

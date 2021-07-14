@@ -1,5 +1,7 @@
 import "./styles.css";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { setAuthForServiceCalls } from "./Utils/authConfig";
 import {
   Categories,
   Homepage,
@@ -11,10 +13,15 @@ import {
   Stats,
   Signup
 } from "./Components/index";
-import { useAuth } from "./Context/UserProvider";
+
 import { PrivateRoute } from "./Utils/PrivateRoute";
+import { useAuth } from "./Context/UserProvider";
 
 export default function App() {
+  const { token } = useAuth();
+ if (token) {
+    setAuthForServiceCalls(token);
+  }
   return (
     <div className="App">
       <Navbar />

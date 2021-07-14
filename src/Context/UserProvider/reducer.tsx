@@ -1,11 +1,11 @@
 import { UserState } from "../../Utils/types";
 import { UserAction } from "../../Utils/actionFlags.types";
 
-const dataFromLocalStorage = JSON.parse(localStorage?.getItem("user"));
+const dataFromLocalStorage = JSON.parse(localStorage.getItem("user")!);
 
-const token = dataFromLocalStorage ? dataFromLocalStorage.token : null;
-const username = dataFromLocalStorage ? dataFromLocalStorage.username : null;
-const fullname = dataFromLocalStorage ? dataFromLocalStorage.fullname : null;
+const token = dataFromLocalStorage ? dataFromLocalStorage.token : "";
+const username = dataFromLocalStorage ? dataFromLocalStorage.username : "";
+const fullname = dataFromLocalStorage ? dataFromLocalStorage.fullname : "";
 
 export const initialState: UserState = {
   token,
@@ -20,15 +20,16 @@ export const authReducer = (state: UserState, action: UserAction) => {
       return {
         ...state,
         token: action.payload.token,
-        user: action.payload.username,
-        fullname: action.payload.fullname
+        username: action.payload.username,
       };
     case "SET_LOGOUT":
-      localStorage.removeItem("login");
+      console.log("insode logout")
+      localStorage.removeItem("user");
       return {
         ...state,
-        login: false,
-        user: null
+        token: null,
+        username: null,
+        fullname:null
       };
     default:
       return state;

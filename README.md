@@ -1,2 +1,2 @@
-# Zen-Tech-Store
-Created with CodeSandbox
+Quizzy
+A Quiz app made using Typescript.

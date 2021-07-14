@@ -8,13 +8,14 @@ import { useNavigate } from "react-router-dom";
 export const Categories = () => {
   const { dispatch } = useQuiz();
   const [modalVisibility, setModalVisibility] = useState(false);
-  const { login } = useAuth();
+  const { token } = useAuth();
   const navigate = useNavigate();
   const showModal = (quizType: string) => {
-    if (login) {
+    console.log(quizType)
+    if (token) {
       dispatch({
         type: "SET_QUIZ_TYPE",
-        payload: quizType
+        payload: {quizType}
       });
       setModalVisibility(!modalVisibility);
     } else {

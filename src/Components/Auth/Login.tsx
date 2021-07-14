@@ -10,6 +10,7 @@ import {
   saveUserToLocalStorage
 } from "../../Utils/authConfig";
 import React from "react";
+import axios from "axios";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -18,10 +19,13 @@ export const Login = () => {
     success: false,
     mesg: ""
   });
-  const { login, userDispatch } = useAuth();
+
+
+  
+  const {token, userDispatch } = useAuth();
 
   useEffect(() => {
-    if (login) {
+    if (token) {
       navigate("/categories");
     }
   }, []);
@@ -44,26 +48,26 @@ export const Login = () => {
     setLoading(true);
     event.preventDefault();
     try {
-      const { success, token, user, message } = await instance.post(
+      const response= await instance.post(
         "/user/login",
         userDetails
       );
-      console.log(token, message);
-      if (success) {
+      console.log(response.data);
+      if (response.data.success) {
         setLoading(false);
         userDispatch({
           type: "SET_LOGIN",
-          payload: { token, username: user.username, fullname: user.fullname }
+          payload: { token:response.data.token, username: response.data.user.username, fullname: response.data.user.fullname }
         });
-        setAuthForServiceCalls(token);
-        saveUserToLocalStorage(user, token);
+        setAuthForServiceCalls(response.data.token);
+        saveUserToLocalStorage(response.data.user, response.data.token);
         setUserDetails({
           username: "",
           password: ""
         });
         navigate("/categories");
       } else {
-        setMesg({ success: false, mesg: message });
+        setMesg({ success: false, mesg: response.data.message });
       }
     } catch (error) {
       console.log(error);
@@ -136,12 +140,7 @@ export const Login = () => {
           />
         </div>
       )}
-      {/* {showToast && (
-        <div className="toast toast-n" ref={toast}>
-          <p>{toastMessage}</p>
-          <button className="btn toast-btn">X</button>
-        </div>
-      )} */}
+      
     </div>
   );
 };

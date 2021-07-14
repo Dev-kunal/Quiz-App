@@ -30,20 +30,15 @@ export const Signup = () => {
   };
   const singupUser = async (event: React.SyntheticEvent) => {
     event.preventDefault();
-    console.log("ok");
     try {
-      const { success, message } = await instance.post(
+      const response = await instance.post(
         "/user/signup",
         userDetails
       );
-      console.log(message);
-      if (success) {
-        console.log(message);
-        setMesg({ success: true, mesg: message });
-        // userDispatch({
-        //   type: "SET_LOGIN",
-        //   payload: { user: response.data.message }
-        // });
+      console.log(response.data);
+      if (response.data.success) {
+        console.log(response.data.message);
+        setMesg({success:true,mesg:response.data.message})
         setUserDetails({
           username: "",
           email: "",
@@ -51,7 +46,7 @@ export const Signup = () => {
           password: ""
         });
       } else {
-        setMesg({ success: false, mesg: message });
+        setMesg({ success: false, mesg: response.data.message });
       }
     } catch (error) {
       console.log(error);

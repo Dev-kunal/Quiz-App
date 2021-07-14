@@ -4,7 +4,7 @@ import { useQuiz } from "../../Context/QuizProvider";
 import "./score.css";
 
 export const Score = () => {
-  const { score, mesg, dispatch } = useQuiz();
+  const {state:{ score, mesg,}, dispatch } = useQuiz();
   const navigate = useNavigate();
 
   const clearOldQuiz = () => {
@@ -22,7 +22,7 @@ export const Score = () => {
       <div className="score-card">
         <div className="card-text">
           <h3 className="category">
-            {mesg} <span>🎉</span>
+            {mesg} <span></span>
           </h3>
           <p>your score is {score}</p>
           <button className="btn" onClick={clearOldQuiz}>

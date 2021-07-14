@@ -1,13 +1,14 @@
-import { Option } from "../../Utils/Data";
+import { Option } from "../../Utils/types";
 import { useQuiz } from "../../Context/QuizProvider";
 import { useEffect, useState } from "react";
 import { timer } from "../../Utils/timer";
 import { useTimer } from "react-timer-hook";
 import { Score } from "../index";
 import { useNavigate } from "react-router-dom";
+import { QuizState } from "../../Utils/types";
 
 export const Quiz = () => {
-  const { questions, currentQuestionNo, dispatch } = useQuiz();
+  const {state:{questions,currentQuestionNo},dispatch } = useQuiz();
   const [selected, setSelected] = useState(false);
   const navigate = useNavigate();
 
@@ -60,22 +61,22 @@ export const Quiz = () => {
     dispatch({
       type: "NEXT_QUESTION"
     });
-
     restart(timer());
   };
-
-  useEffect(() => {
+ 
+  
+ useEffect(() => {
     start();
     return () => {
       pause();
     };
   }, []);
 
-  // console.log("questions from Quiz ", questions);
+  console.log("from from Quiz ");
 
   return (
     <>
-      {questions.length > 0 && currentQuestionNo + 1 <= questions.length ? (
+      {questions.length > 0 && (currentQuestionNo + 1 <= questions.length) ? (
         <>
           <div className="off-quiz">
             <button className="off-btn" onClick={() => quitQuiz()}>

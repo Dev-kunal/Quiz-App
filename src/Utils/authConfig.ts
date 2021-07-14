@@ -1,15 +1,16 @@
 import axios from "axios";
 
 export const instance = axios.create({
-  baseURL: "http://localhost:3000"
+  baseURL: "http://localhost:5000"
 });
 
-export const setAuthForServiceCalls = (token:string) => {
+export const setAuthForServiceCalls = (token: string) => {
+  console.log("token from Insttance update ",token)
   instance.defaults.headers.common["Authorization"] = token;
 };
 
 
-  export const saveUserToLocalStorage = (user, token) => {
+  export const saveUserToLocalStorage = (user:any, token:string) => {
     localStorage.setItem(
       "user",
       JSON.stringify({

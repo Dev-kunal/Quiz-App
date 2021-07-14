@@ -10,7 +10,7 @@ export type Question = {
 };
 export type Quiz = {
   quizName: string;
-  questions: Question[];
+  questions: Array<Question>;
 };
 export type QuizData = {
   quizzes: Quiz[];
@@ -22,7 +22,7 @@ export type Answers = {
 };
 
 export type serverError = {
-  errormessage: string;
+  errorMessage: string;
 };
 
 export type StatsType = {
@@ -32,16 +32,16 @@ export type StatsType = {
 };
 
 export type QuizState = {
-  questions: Array<Question>;
-  quizType: string;
+  questions: Array<Question>|[];
+  quizType: string|"";
   currentQuestionNo: number;
   score: number;
-  mesg: string;
+  mesg: string|"";
   stats: Array<StatsType>;
 };
 
 export type UserState = {
-  token: string;
-  username: string;
-  fullname: string;
+  token:any|null;
+  username: string|null;
+  fullname: string|null;
 };

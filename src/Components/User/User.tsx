@@ -3,13 +3,15 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/UserProvider";
 
 export const User = () => {
-  const { login, user, userDispatch } = useAuth();
+  const { token, username, userDispatch } = useAuth();
   const navigate = useNavigate();
-
+  if (!token) {
+    navigate("/login");
+  }
   return (
     <div className="user-page">
       <div className="user-info">
-        {login ? (
+        {token ? (
           <>
             {" "}
             <img
@@ -19,14 +21,17 @@ export const User = () => {
             />
             <h3>
               {" "}
-              Welcome <span className="username">{user.username}</span>
+              Welcome <span className="username">{username}</span>
             </h3>
+            <button className="btn btn-xlg" onClick={() => navigate("/")}>
+              Home
+            </button>
             <button className="btn btn-xlg" onClick={() => navigate("/stats")}>
               Stats
             </button>
             <button
               className="btn btn-xlg"
-              onClick={() => userDispatch({ type: "SET_LOGOUT" })}
+              onClick={() => userDispatch({type: "SET_LOGOUT" })}
             >
               Logout
             </button>
