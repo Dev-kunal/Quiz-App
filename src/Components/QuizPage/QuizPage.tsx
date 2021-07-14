@@ -16,7 +16,7 @@ export const QuizPage = () => {
   console.log(quizType, "before api call");
   const getQuiz = async (): Promise<QuizData | serverError> => {
     try {
-       setLoading(false)
+       setLoading(true)
       const response = await instance.post<QuizData>(
         "/quiz", 
         {

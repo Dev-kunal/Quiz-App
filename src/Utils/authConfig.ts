@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const instance = axios.create({
-  baseURL: "http://localhost:5000"
+  baseURL: "https://quiz-app--server.herokuapp.com"
 });
 
 export const setAuthForServiceCalls = (token: string) => {

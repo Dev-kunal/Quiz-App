@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./auth.css";
-import axios from "axios";
-import { useAuth } from "../../Context/UserProvider";
 import React from "react";
 import { instance } from "../../Utils/authConfig";
+import Loader from "react-loader-spinner";
 
-export const Signup = () => {
-  const { userDispatch } = useAuth();
-  const navigate = useNavigate();
+export const Signup = () => { 
+  const [loading, setLoading] = useState(false);
+  
   const [mesg, setMesg] = useState({
     success: false,
     mesg: ""
@@ -31,10 +30,12 @@ export const Signup = () => {
   const singupUser = async (event: React.SyntheticEvent) => {
     event.preventDefault();
     try {
+      setLoading(true)
       const response = await instance.post(
         "/user/signup",
         userDetails
       );
+      setLoading(false);
       console.log(response.data);
       if (response.data.success) {
         console.log(response.data.message);
@@ -136,6 +137,17 @@ export const Signup = () => {
           </span>
         </form>
       </div>
+      {loading && (
+        <div className="loader-container">
+          <Loader
+            type="RevolvingDot"
+            color="#2bc48a"
+            height={100}
+            width={100}
+            timeout={2000}
+          />
+        </div>
+      )}
     </div>
   );
 };
