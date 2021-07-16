@@ -11,7 +11,7 @@ export const Categories = () => {
   const { token } = useAuth();
   const navigate = useNavigate();
   const showModal = (quizType: string) => {
-    console.log(quizType)
+    
     if (token) {
       dispatch({
         type: "SET_QUIZ_TYPE",
@@ -58,20 +58,6 @@ export const Categories = () => {
               </button>
             </div>
           </div>
-          {/* <div className="card">
-            <div className="card-text">
-              <h3 className="category">General</h3>
-              <p>
-                Quiz to test your knowledge regarding <b>General</b> Topics
-              </p>
-              <button
-                className="btn btn-quiz"
-                onClick={() => showModal("GENERAL")}
-              >
-                Start Quiz
-              </button>
-            </div>
-          </div> */}
         </div>
         {modalVisibility && (
           <RulesModal

@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../Context/UserProvider";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Loader from "react-loader-spinner";
 import "./auth.css";
 import {
@@ -10,7 +10,7 @@ import {
   saveUserToLocalStorage
 } from "../../Utils/authConfig";
 import React from "react";
-import axios from "axios";
+
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ export const Login = () => {
         "/user/login",
         userDetails
       );
-      console.log(response.data);
+      
       if (response.data.success) {
         setLoading(false);
         userDispatch({

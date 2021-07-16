@@ -4,7 +4,6 @@ import { useAuth } from "../../Context/UserProvider";
 
 export const Navbar = () => {
   const { token } = useAuth();
-  // console.log("login from Navbar", token);
 
   return (
     <div className="navbar navbar-right">

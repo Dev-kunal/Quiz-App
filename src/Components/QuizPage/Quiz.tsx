@@ -3,9 +3,7 @@ import { useQuiz } from "../../Context/QuizProvider";
 import { useEffect, useState } from "react";
 import { timer } from "../../Utils/timer";
 import { useTimer } from "react-timer-hook";
-import { Score } from "../index";
 import { useNavigate } from "react-router-dom";
-import { QuizState } from "../../Utils/types";
 
 export const Quiz = () => {
   const {state:{questions,currentQuestionNo},dispatch } = useQuiz();
@@ -72,7 +70,7 @@ export const Quiz = () => {
     };
   }, []);
 
-  console.log("from from Quiz ");
+  
 
   return (
     <>

@@ -36,7 +36,7 @@ export const Signup = () => {
         userDetails
       );
       setLoading(false);
-      console.log(response.data);
+      
       if (response.data.success) {
         console.log(response.data.message);
         setMesg({success:true,mesg:response.data.message})

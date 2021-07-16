@@ -18,7 +18,6 @@ export const initialState: QuizState = {
 export const quizReducer = (state: QuizState, action: QuizAction):QuizState => {
   switch (action.type) {
     case "SET_QUIZ_TYPE":
-      console.log("inside setQuizType", action.payload);
       return {
         ...state,
         quizType: action.payload.quizType,

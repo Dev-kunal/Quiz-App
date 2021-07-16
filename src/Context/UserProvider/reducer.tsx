@@ -23,7 +23,6 @@ export const authReducer = (state: UserState, action: UserAction) => {
         username: action.payload.username,
       };
     case "SET_LOGOUT":
-      console.log("insode logout")
       localStorage.removeItem("user");
       return {
         ...state,
