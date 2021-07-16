@@ -5,7 +5,6 @@ export const instance = axios.create({
 });
 
 export const setAuthForServiceCalls = (token: string) => {
-  console.log("token from Insttance update ",token)
   instance.defaults.headers.common["Authorization"] = token;
 };
 
