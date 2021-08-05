@@ -28,9 +28,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/categories" element={<Categories />} />
-        <Route path="/user" element={<User />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <PrivateRoute path="/user" element={<User />} />
         <PrivateRoute path="/quiz" element={<QuizPage />} />
         <PrivateRoute path="/score" element={<Score />} />
         <PrivateRoute path="/stats" element={<Stats />} />

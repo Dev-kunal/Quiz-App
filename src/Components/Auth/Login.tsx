@@ -30,8 +30,8 @@ export const Login = () => {
     }
   }, []);
   const [userDetails, setUserDetails] = useState({
-    username: "",
-    password: ""
+    username: "raj",
+    password: "raj"
   });
 
   const onType: React.ChangeEventHandler<HTMLInputElement> = (event) => {

@@ -1,13 +1,13 @@
 import "./user.css";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../Context/UserProvider";
 
 export const User = () => {
   const { token, username, userDispatch } = useAuth();
   const navigate = useNavigate();
-  if (!token) {
-    navigate("/login");
-  }
+  const logOutUser = () => {
+    userDispatch({ type: "SET_LOGOUT" });
+   }
   return (
     <div className="user-page">
       <div className="user-info">
@@ -31,7 +31,7 @@ export const User = () => {
             </button>
             <button
               className="btn btn-xlg"
-              onClick={() => userDispatch({type: "SET_LOGOUT" })}
+              onClick={() =>logOutUser()}
             >
               Logout
             </button>

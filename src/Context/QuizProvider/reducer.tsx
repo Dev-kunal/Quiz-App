@@ -23,7 +23,6 @@ export const quizReducer = (state: QuizState, action: QuizAction):QuizState => {
         quizType: action.payload.quizType,
       }
     case "SET_QUIZ":
-      console.log("qustions from Reducer", action.payload);
       return {
         ...state,
         questions: action.payload.quiz

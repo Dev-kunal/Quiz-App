@@ -16,7 +16,6 @@ export const initialState: UserState = {
 export const authReducer = (state: UserState, action: UserAction) => {
   switch (action.type) {
     case "SET_LOGIN":
-      console.log("inside login");
       return {
         ...state,
         token: action.payload.token,

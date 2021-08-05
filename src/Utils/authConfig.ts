@@ -19,3 +19,16 @@ export const setAuthForServiceCalls = (token: string) => {
       })
     );
   };
+
+  export const setupAuthExceptionHandler=(logOutUser:any) =>{
+  const UNAUTHORIZED = 401;
+  axios.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      if (error?.response?.status === UNAUTHORIZED) {
+        logOutUser();
+      }
+      return Promise.reject(error);
+    }
+  );
+}
