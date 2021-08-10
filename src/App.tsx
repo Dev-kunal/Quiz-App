@@ -1,7 +1,7 @@
 import "./styles.css";
-import { Routes, Route, Navigate } from "react-router-dom";
-import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import { setAuthForServiceCalls } from "./Utils/authConfig";
+
 import {
   Categories,
   Homepage,
