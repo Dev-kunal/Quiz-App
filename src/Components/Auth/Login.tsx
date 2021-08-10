@@ -19,21 +19,20 @@ export const Login = () => {
     success: false,
     mesg: ""
   });
+  const [userDetails, setUserDetails] = useState({
+    username: "raj",
+    password: "raj"
+  });
 
-
-  
   const {token, userDispatch } = useAuth();
 
   useEffect(() => {
     if (token) {
       navigate("/categories");
     }
-  }, []);
-  const [userDetails, setUserDetails] = useState({
-    username: "raj",
-    password: "raj"
-  });
+  }, [token,navigate]);
 
+  
   const onType: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     const { name, value } = event.target;
     setUserDetails((prevdetails) => {

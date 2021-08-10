@@ -10,8 +10,7 @@ import Loader from "react-loader-spinner";
 
 export const QuizPage = () => {
   const {state:{quizType,questions},dispatch} = useQuiz();
-  
-   const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   
   const getQuiz = async (): Promise<QuizData | serverError> => {
@@ -44,7 +43,7 @@ export const QuizPage = () => {
            dispatch({ type: "SET_QUIZ", payload: quizData });
         }
     })();
-  }, []); 
+  }, [dispatch]); 
 
   return (
     <>
