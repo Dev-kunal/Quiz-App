@@ -1,7 +1,24 @@
 import "./homepage.css";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { instance } from "../../Utils/authConfig";
+
+type InitialResponse = {
+  mesg:string
+}
 export const Homepage = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    (async() => {
+      try {
+        const response= await instance.get<InitialResponse>("/");
+        console.log(response.data.mesg);
+      }
+      catch (error) {
+        console.log(error)
+      }
+    })();
+  }, [])
   return (
     <>
       <div className="homepage">
