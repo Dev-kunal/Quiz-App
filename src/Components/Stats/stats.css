@@ -1,0 +1,23 @@
+.stats-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.table {
+  border-radius: 0.5rem;
+  text-align: center;
+  width: 60%;
+  margin-bottom: 1rem;
+}
+tr.tr td {
+  border-bottom: 1px solid var(--myColor);
+}
+
+.th {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--myColor);
+}
+.td {
+  padding: 0.7rem 0.2rem;
+}

@@ -1,0 +1,10 @@
+export { Navbar } from "./Navbar/Navbar";
+export { Homepage } from "./Homepage/Homepage";
+export { Categories } from "./Categories/Categories";
+export { RulesModal } from "./RulesModal/RulesModal";
+export { QuizPage } from "./QuizPage/QuizPage";
+export { Score } from "./Score/Score";
+export { User } from "./User/User";
+export { Login } from "./Auth/Login";
+export {Stats} from "./Stats/Stats";
+export {Signup } from "./Auth/Sigup";
